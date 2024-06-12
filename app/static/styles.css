@@ -43,7 +43,9 @@ footer{
     bottom: 0;
     width: 100%;
 }
-.login-cont{
+.login-cont,
+.clients-cont,
+.main-cont{
     max-width: 1000px;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -78,7 +80,8 @@ footer{
 .login-text{
     color: #535151;
 }
-.submit-button{
+.submit-button
+{
     
     width: 100%;
     padding: 10px;
@@ -91,4 +94,31 @@ footer{
 }
 .submit-button:hover{
     background-color: #45a049;
+}
+.text-clients{
+    text-align: center;
+    font-size: large;
+    
+}
+.client-table{
+    margin: auto;
+    
+    border-radius: 12px;
+    text-align: center;
+}
+.client-table th{
+    background-color: #45a049;
+    color: #ffffff;
+    padding: 10px;
+}
+.client-table td{
+    padding: 10px;
+}
+.status-button,
+.change-button,
+.status{
+    width: 100%;
+    padding: 2px;
+    margin: 5px;
+    border-radius: 5px;
 }

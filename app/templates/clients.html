@@ -10,37 +10,58 @@
 <body>
     {% include 'header.html' %}
     <div class="clients-cont">
-        <a class=" text-clients">Клиенты для {{user_name}}</a>
+        <div class=" text-clients">Клиенты для {{user_name}}</div>
 
-        <table border="1">
+        <table class="client-table">
             <tr>
-                <th>ID</th>
-                <th>Account Number</th>
-                <th>Surname</th>
-                <th>Names</th>
-                <th>First Name</th>
-                <th>Birth Date</th>
-                <th>INN</th>
-                <th>Manager</th>
-                <th>Status</th>
-                <th>Timestamp</th>
+                
+                <th>Номер счета</th>
+                <th>Фамилия</th>
+                <th>Имя</th>
+                <th>Отчество</th>
+                <th>Дата рождения</th>
+                <th>ИНН</th>
+                <th>Статус</th>
+                
             </tr>
             {% for client in clients %}
             <tr>
-                <td>{{ client['id'] }}</td>
+                
                 <td>{{ client['acc_number'] }}</td>
                 <td>{{ client['Surname'] }}</td>
-                <td>{{ client['Names'] }}</td>
+                <td>{{ client['Name'] }}</td>
                 <td>{{ client['F_name'] }}</td>
                 <td>{{ client['Birth_date'] }}</td>
-                <td>{{ client['INN'] }}</td>
-                <td>{{ client['Manager'] }}</td>
-                <td>{{ client['Status'] }}</td>
-                <td>{{ client['timestampdata'] }}</td>
+                <td>{{ client['INN'] }}</td>               
+                <td>{{ client['Status'] }}
+                    <button class="status-button">Изменить</button>
+                    <form class="status-form" method="post" action="/update_status">
+                        <select name="status" class="status" style="display: none;">
+                            <option value="В работе">В работе</option>
+                            <option value="Отказ">Отказ</option>
+                            <option value="Сделка закрыта">Сделка закрыта</option>
+                        </select>
+                        <input type="hidden" name="client_id" value="{{ client['id'] }}">
+                        <button type="submit" class="change-button" style="display: none;">Изменить</button>
+                    </form>
+
+                </td>                
             </tr>
             {% endfor %}
         </table>
     </div>
-    
+    <script>
+         document.querySelectorAll('.status-button').forEach(button => {
+            button.addEventListener('click', (event) => {
+                const row = event.target.closest('tr');
+                row.querySelector('.status').style.display = "block";
+                event.target.style.display = "none";
+                row.querySelector('.change-button').style.display = "block";
+            });
+        });
+
+        
+
+    </script>
     {% include 'footer.html' %}
 </body>

@@ -9,6 +9,20 @@
 </head>
 <body>
     {% include 'header.html' %}
-
+    <div class="main-cont">
+        {% if 'user_id' in session %}
+            <div style="margin: 20px;">
+                <a class ="text-clients" href="/clients"> Посмотреть таблицу клиентов </a>
+            </div>
+        {% else %}
+        <div style="margin: 20px;">
+            <a class ="text-clients"> Авторизируйтесь, чтобы продолжить работу с приложением </a>
+        </div>
+        {% endif %}
+        <div>
+            <p style="margin: 20px;">Авторизация по логину и паролю. Все логины и пароли одного типа. Логин: "loggin0", пароль: "password0". Идентификаторы от 0 до 9 (по количесвту добавленных в БД пользователей).</p>
+        </div>
+    
+    </div>
     {% include 'footer.html' %}
 </body>

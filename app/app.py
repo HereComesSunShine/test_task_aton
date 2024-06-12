@@ -61,4 +61,16 @@ def logout():
     session.clear()
     return redirect(url_for('home_page'))
 
+@app.route("/update_status", methods=["POST"])
+def update_status():
+    
+    client_id = request.form["client_id"] 
+    new_status = request.form["status"]
+    
+    conn=get_db_connection()
+    conn.execute("UPDATE clients SET Status = ? WHERE id = ?", (new_status, client_id))
+    conn.commit()
+    conn.close()
+    return redirect(url_for('clients'))
+
 app.run(debug=True)
