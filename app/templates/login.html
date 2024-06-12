@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="static/styles.css">
+    
+</head>
+<body>
+    {% include 'header.html' %}
+    <div class = "login-cont">
+        <p class ="login-form-text">Авторизируйтесь, для продолжения работы с приложением</p>
+        <form class="login-form" method="post" action="{{ url_for('login') }}">
+            <p class="login-text">Login</p>
+            <input type="text" class="input-field" name="login_input" id="login_input" required>
+            <p class="login-text">Password</p>
+            <input type="password" class="input-field" name="password_input" id="password_input" required>
+            <button type="submit" id="login_button" class="submit-button">Log In</button>
+        </form>
+        {% if error %}
+            <p class ="login_cont" style="color: red;">{{ error }}</p>
+        {% endif %}
+    </div>
+    {% include 'footer.html' %}
+</body>

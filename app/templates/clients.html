@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clients</title>
+    <link rel="stylesheet" href="static/styles.css">
+    
+</head>
+<body>
+    {% include 'header.html' %}
+    <div class="clients-cont">
+        <a class=" text-clients">Клиенты для {{user_name}}</a>
+
+        <table border="1">
+            <tr>
+                <th>ID</th>
+                <th>Account Number</th>
+                <th>Surname</th>
+                <th>Names</th>
+                <th>First Name</th>
+                <th>Birth Date</th>
+                <th>INN</th>
+                <th>Manager</th>
+                <th>Status</th>
+                <th>Timestamp</th>
+            </tr>
+            {% for client in clients %}
+            <tr>
+                <td>{{ client['id'] }}</td>
+                <td>{{ client['acc_number'] }}</td>
+                <td>{{ client['Surname'] }}</td>
+                <td>{{ client['Names'] }}</td>
+                <td>{{ client['F_name'] }}</td>
+                <td>{{ client['Birth_date'] }}</td>
+                <td>{{ client['INN'] }}</td>
+                <td>{{ client['Manager'] }}</td>
+                <td>{{ client['Status'] }}</td>
+                <td>{{ client['timestampdata'] }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+    
+    {% include 'footer.html' %}
+</body>

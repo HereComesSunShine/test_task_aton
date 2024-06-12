@@ -1,0 +1,15 @@
+<header>
+    <div class="header-container">
+        <h1 class="logo">Some App</h1>
+        <nav class = "header-nav">
+            <ul>
+                <li><a href="/">Home</a></li>
+                {% if 'user_id' in session %}
+                    <li><a href="/logout">Log Out</a></li>
+                {% else %}
+                    <li><a href="/login">Log In</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+    </div>
+</header>
